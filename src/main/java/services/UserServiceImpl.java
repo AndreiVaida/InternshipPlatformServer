@@ -15,9 +15,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String sayHello() {
+    public User sayHello() {
         final User user = new User();
         userRepository.save(user);
-        return user.getId().toString();
+        return user;
     }
 }

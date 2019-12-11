@@ -1,5 +1,8 @@
 package controllers;
 
+import domain.User;
+import dtos.UserDTO;
+import mappers.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +23,9 @@ public class UserController extends TopController {
 
     @GetMapping
     public ResponseEntity<String> sayHello() {
-        final String hello = userService.sayHello();
-        return new ResponseEntity<>("Hello world ! I am " + hello, HttpStatus.OK);
+        final User user = userService.sayHello();
+        final UserDTO userDTO = UserMapper.userToUserDto(user);
+
+        return new ResponseEntity<>("Hello world ! I am " + userDTO.getHello(), HttpStatus.OK);
     }
 }

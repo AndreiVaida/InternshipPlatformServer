@@ -1,5 +1,7 @@
 package services;
 
+import domain.User;
+
 public interface UserService {
-    String sayHello();
+    User sayHello();
 }
