@@ -28,6 +28,22 @@ dependencies {
     // Spring Boot
     compile("org.springframework.boot:spring-boot-starter-web")
 
+    // Spring Security Web
+    // https://mvnrepository.com/artifact/org.springframework.security/spring-security-web
+    compile group: 'org.springframework.security', name: 'spring-security-web', version: '5.2.1.RELEASE'
+
+    // Spring Security Configuration
+    // https://mvnrepository.com/artifact/org.springframework.security/spring-security-config
+    compile group: 'org.springframework.security', name: 'spring-security-config', version: '5.2.1.RELEASE'
+
+    // Spring Validation
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.2.2.RELEASE'
+
+    // Google Collections
+    // https://mvnrepository.com/artifact/com.google.collections/google-collections
+    compile group: 'com.google.collections', name: 'google-collections', version: '1.0'
+
     // Spring Data JPA
     // https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa
     compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '2.2.3.RELEASE'

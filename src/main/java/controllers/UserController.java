@@ -25,7 +25,8 @@ public class UserController extends TopController {
     public ResponseEntity<String> sayHello() {
         final User user = userService.sayHello();
         final UserDTO userDTO = UserMapper.userToUserDto(user);
+        final String response = "Hello world! I am " + userDTO.getHello();
 
-        return new ResponseEntity<>("Hello world ! I am " + userDTO.getHello(), HttpStatus.OK);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
