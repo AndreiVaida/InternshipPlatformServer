@@ -13,20 +13,25 @@ import javax.validation.constraints.NotNull;
 @Data
 // Persistence
 @Entity
-@Table(name = "USERS")
-public abstract class User {
+@Table(name = "EDUCATIONS")
+public class Education {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "USER_ID", unique = true, nullable = false)
     private Integer id;
 
-    @NotNull
-    @Column(unique = true)
-    private String email; //university mail
+    @ManyToOne
+    @JoinColumn(name="STUDENT_ID")
+    private Student student;
+
 
     @NotNull
-    private String password;
+    private EducationalDegree degree;
 
     @NotNull
-    private String name;
+    private String institutionName;
+
+    @NotNull
+    private String specialization;
+
+    private String description;
 }
