@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repositories.EducationRepository;
 import repositories.StudentRepository;
+import repositories.UserRepository;
 
 import javax.persistence.EntityExistsException;
 
@@ -12,15 +13,17 @@ import javax.persistence.EntityExistsException;
 public class StudentService {
     private final StudentRepository studentRepository;
     private final EducationRepository educationRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    public StudentService(StudentRepository studentRepository, EducationRepository educationRepository) {
+    public StudentService(StudentRepository studentRepository, EducationRepository educationRepository, UserRepository userRepository) {
         this.studentRepository = studentRepository;
         this.educationRepository = educationRepository;
+        this.userRepository = userRepository;
     }
 
     public Student addStudent(Student newStudent){
-        if(studentRepository.findByEmail(newStudent.getEmail()).size() > 0){
+        if(userRepository.findByEmail(newStudent.getEmail()).size() > 0){
             throw new EntityExistsException("Exista un cont cu acest mail");
         }
 
