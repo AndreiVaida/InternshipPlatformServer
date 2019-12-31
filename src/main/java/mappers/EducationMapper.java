@@ -2,9 +2,7 @@ package mappers;
 
 import domain.Education;
 import domain.EducationalDegree;
-import domain.Student;
 import dtos.EducationDTO;
-import dtos.StudentDTO;
 
 public class EducationMapper {
     public static EducationDTO educationToEducationDTO(final Education education) {

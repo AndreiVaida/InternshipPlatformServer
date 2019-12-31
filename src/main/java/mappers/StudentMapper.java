@@ -2,10 +2,8 @@ package mappers;
 
 import domain.Education;
 import domain.Student;
-import domain.User;
 import dtos.EducationDTO;
 import dtos.StudentDTO;
-import dtos.UserDTO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +13,12 @@ public class StudentMapper {
         List<EducationDTO> educationDTOs = new ArrayList<>();
         student.getEducationList().forEach(x->educationDTOs.add(EducationMapper.educationToEducationDTO(x)));
 
-        final StudentDTO dto = new StudentDTO(student.getId(),student.getEmail(),student.getPassword(),student.getName(),educationDTOs);
+        final StudentDTO dto = new StudentDTO();
+        dto.setId(student.getId());
+        dto.setEmail(student.getEmail());
+        dto.setPassword(student.getPassword());
+        dto.setName(student.getName());
+        dto.setEducationDTOs(educationDTOs);
         return dto;
     }
 
