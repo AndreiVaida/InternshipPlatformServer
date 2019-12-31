@@ -13,15 +13,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
-import services.UserServiceImpl;
+import services.UserService;
 
 @RestController
 @RequestMapping("user")
 public class UserController extends TopController {
-    private final UserServiceImpl userService;
+    private final UserService userService;
 
     @Autowired
-    public UserController(UserServiceImpl userService) {
+    public UserController(UserService userService) {
         this.userService = userService;
     }
 
@@ -35,7 +35,7 @@ public class UserController extends TopController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @PostMapping(path = "/student", consumes = "application/json", produces = "application/json")
+    @PostMapping(path = "/student")
     public ResponseEntity<String> addStudent(@RequestBody StudentDTO studentDTO) {
         Student student = StudentMapper.studentDTOToStudent(studentDTO);
         userService.addStudent(student);
@@ -43,7 +43,7 @@ public class UserController extends TopController {
         return new ResponseEntity<>("Adaugat cu succes!", HttpStatus.OK);
     }
 
-    @PostMapping(path = "/company", consumes = "application/json", produces = "application/json")
+    @PostMapping(path = "/company")
     public ResponseEntity<String> addStudent(@RequestBody CompanyDTO companyDTO) {
         Company company = CompanyMapper.companyDTOToCompany(companyDTO);
         userService.addCompany(company);

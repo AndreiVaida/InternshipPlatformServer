@@ -15,7 +15,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import services.UserDetailsServiceImpl;
-import services.UserServiceImpl;
+import services.UserService;
 
 import static configuration.SecurityConstraints.*;
 
@@ -24,10 +24,10 @@ import static configuration.SecurityConstraints.*;
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     private final UserDetailsServiceImpl userDetailsService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
-    private final UserServiceImpl userService;
+    private final UserService userService;
 
     @Autowired
-    public WebSecurityConfiguration(UserDetailsServiceImpl userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder, UserServiceImpl userService) {
+    public WebSecurityConfiguration(UserDetailsServiceImpl userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder, UserService userService) {
         this.userDetailsService = userDetailsService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.userService = userService;

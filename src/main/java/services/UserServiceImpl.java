@@ -15,7 +15,7 @@ import javax.persistence.EntityExistsException;
 import javax.persistence.EntityNotFoundException;
 
 @Service
-public class UserServiceImpl {
+public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final StudentRepository studentRepository;
     private final CompanyRepository companyRepository;
@@ -31,9 +31,11 @@ public class UserServiceImpl {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-    public User sayHello() {
-        final User user = new Company();
-        userRepository.save(user);
+    public User getUserByEmail(String email){
+        User user = userRepository.getByEmail(email);
+        if (user == null) {
+            throw new EntityNotFoundException("Nu exista un cont cu acest mail.");
+        }
         return user;
     }
 
@@ -65,14 +67,5 @@ public class UserServiceImpl {
         companyRepository.save(company);
 
         return company;
-    }
-
-
-    public User getUserByEmail(String email){
-        User user = userRepository.getByEmail(email);
-        if (user == null) {
-            throw new EntityNotFoundException("Nu exista un cont cu acest mail.");
-        }
-        return user;
     }
 }

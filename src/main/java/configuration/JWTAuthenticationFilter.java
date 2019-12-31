@@ -9,7 +9,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import services.UserServiceImpl;
+import services.UserService;
 
 import javax.servlet.FilterChain;
 import javax.servlet.http.HttpServletRequest;
@@ -24,9 +24,9 @@ import static org.jvnet.fastinfoset.FastInfosetSerializer.UTF_8;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     private final AuthenticationManager authenticationManager;
-    private final UserServiceImpl userService;
+    private final UserService userService;
 
-    public JWTAuthenticationFilter(AuthenticationManager authenticationManager, UserServiceImpl userService) {
+    public JWTAuthenticationFilter(AuthenticationManager authenticationManager, UserService userService) {
         this.authenticationManager = authenticationManager;
         this.userService = userService;
     }
