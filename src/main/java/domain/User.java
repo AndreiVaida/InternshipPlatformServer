@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 // Persistence
 @Entity
 @Table(name = "USERS")
-public abstract class User {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "USER_ID", unique = true, nullable = false)
@@ -22,7 +22,7 @@ public abstract class User {
 
     @NotNull
     @Column(unique = true)
-    private String email; //university mail
+    private String email;
 
     @NotNull
     private String password;

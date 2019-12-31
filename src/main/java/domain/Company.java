@@ -1,13 +1,12 @@
 package domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 // Lombok
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 //@AllArgsConstructor
 @Data
