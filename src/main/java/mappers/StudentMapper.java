@@ -18,7 +18,7 @@ public class StudentMapper {
         dto.setEmail(student.getEmail());
         dto.setPassword(student.getPassword());
         dto.setName(student.getName());
-        dto.setEducationDTOs(educationDTOs);
+        dto.setEducations(educationDTOs);
         return dto;
     }
 
@@ -30,7 +30,7 @@ public class StudentMapper {
         student.setName(dto.getName());
 
         List<Education> educations = new ArrayList<>();
-        dto.getEducationDTOs().forEach(x->educations.add(EducationMapper.educationDTOToEducation(x)));
+        dto.getEducations().forEach(x->educations.add(EducationMapper.educationDTOToEducation(x)));
         student.setEducationList(educations);
 
         return student;

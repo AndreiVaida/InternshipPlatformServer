@@ -25,8 +25,9 @@ public class UserController extends TopController {
         this.userService = userService;
     }
 
+    // can delete this anytime
     @GetMapping
-    public ResponseEntity<String> sayHello() {
+    public ResponseEntity<String> sayHello_DEMO_REQUEST() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = auth.getPrincipal().toString(); // the email
         final User user = userService.getUserByEmail(username);

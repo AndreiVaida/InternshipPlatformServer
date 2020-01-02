@@ -15,5 +15,5 @@ public class StudentDTO {
     private String email; //university mail
     private String password;
     private String name;
-    private List<EducationDTO> educationDTOs;
+    private List<EducationDTO> educations;
 }
