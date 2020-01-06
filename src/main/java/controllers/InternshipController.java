@@ -2,7 +2,9 @@ package controllers;
 
 import domain.Internship;
 import dtos.FilterDTO;
+import dtos.FilterNamesDto;
 import dtos.InternshipDTO;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,15 +43,12 @@ public class InternshipController {
         return new ResponseEntity<>(internshipDTOs, HttpStatus.OK);
     }
 
-    @GetMapping(path = "/cities")
-    public ResponseEntity<List<String>> getInternshipCities() {
+    @GetMapping(path = "/filterName")
+    public ResponseEntity<FilterNamesDto> getInternshipCities() {
         List<String> cities = internshipService.getCities();
-        return new ResponseEntity<>(cities, HttpStatus.OK);
-    }
-
-    @GetMapping(path = "/industries")
-    public ResponseEntity<List<String>> getInternshipIndustries() {
         List<String> industries = internshipService.getIndustries();
-        return new ResponseEntity<>(industries, HttpStatus.OK);
+        FilterNamesDto filterNames = new FilterNamesDto(cities, industries);
+
+        return new ResponseEntity<>(filterNames, HttpStatus.OK);
     }
 }

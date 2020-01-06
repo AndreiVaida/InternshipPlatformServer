@@ -9,4 +9,6 @@ abstract class SecurityConstraints {
     static final String LOGIN_URL = "/login";
     static final String REGISTER_STUDENT_URL = "/user/student";
     static final String REGISTER_COMPANY_URL = "/user/company";
+    static final String FILTERS_NAMES_URL = "/internship/filterName";
+    static final String FILTER_INTERNSHIPS_URL = "/internship/filter";
 }
