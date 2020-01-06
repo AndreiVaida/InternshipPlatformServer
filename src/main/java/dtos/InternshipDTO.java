@@ -1,5 +1,6 @@
 package dtos;
 
+import domain.Company;
 import domain.Internship;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,15 +13,11 @@ import java.time.LocalDate;
 @Data
 public class InternshipDTO {
     private Integer id;
+    private Integer companyId;
     private String name;
     private String city;
     private String industry;
     private String startDate;
     private String endDate;
     private String description;
-
-    public Internship asEntity() {
-        LocalDate start = LocalDate.parse(startDate), end = LocalDate.parse(endDate);
-        return new Internship(id, name, city, industry, start, end, description);
-    }
 }

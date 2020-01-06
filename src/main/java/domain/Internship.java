@@ -21,6 +21,11 @@ public class Internship {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @ManyToOne
+    @JoinColumn(name = "COMPANY_ID")
+    @NonNull
+    private Company company;
+
     @Column
     @NonNull
     private String name;
@@ -45,7 +50,7 @@ public class Internship {
     @Column
     private String description;
 
-    InternshipDTO asDTO() {
-        return new InternshipDTO(id, name, city, industry, startDate.toString(), endDate.toString(), description);
+    public InternshipDTO asDTO() {
+        return new InternshipDTO(id, company.getId(), name, city, industry, startDate.toString(), endDate.toString(), description);
     }
 }
