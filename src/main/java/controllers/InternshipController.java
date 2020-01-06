@@ -40,4 +40,16 @@ public class InternshipController {
 
         return new ResponseEntity<>(internshipDTOs, HttpStatus.OK);
     }
+
+    @GetMapping(path = "/cities")
+    public ResponseEntity<List<String>> getInternshipCities() {
+        List<String> cities = internshipService.getCities();
+        return new ResponseEntity<>(cities, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/industries")
+    public ResponseEntity<List<String>> getInternshipIndustries() {
+        List<String> industries = internshipService.getIndustries();
+        return new ResponseEntity<>(industries, HttpStatus.OK);
+    }
 }

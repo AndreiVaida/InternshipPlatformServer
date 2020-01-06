@@ -12,6 +12,7 @@ import repositories.InternshipRepository;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -58,5 +59,15 @@ public class InternshipServiceImpl implements InternshipService {
                 .filter((i) -> earliestStartDate == null || earliestStartDate.isBefore(i.getStartDate()) || earliestStartDate.isEqual(i.getStartDate()))
                 .filter((i) -> latestEndDate == null || latestEndDate.isAfter(i.getEndDate()) || latestEndDate.isEqual(i.getEndDate()))
                 .map(Internship::asDTO).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<String> getCities() {
+        return new ArrayList<>(internshipRepository.findAll().stream().map(Internship::getCity).collect(Collectors.toSet()));
+    }
+
+    @Override
+    public List<String> getIndustries() {
+        return new ArrayList<>(internshipRepository.findAll().stream().map(Internship::getIndustry).collect(Collectors.toSet()));
     }
 }
