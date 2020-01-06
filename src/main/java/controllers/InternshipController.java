@@ -29,6 +29,12 @@ public class InternshipController {
     }
 
     @GetMapping
+    public ResponseEntity<InternshipDTO> getInternship(@RequestParam("internshipId") Integer id) {
+        InternshipDTO internshipDTO = internshipService.getInternship(id).asDTO();
+        return new ResponseEntity<>(internshipDTO, HttpStatus.OK);
+    }
+
+    @PostMapping(path = "/filter")
     public ResponseEntity<List<InternshipDTO>> getInternships(@RequestBody FilterDTO filterDTO) {
         List<InternshipDTO> internshipDTOs = internshipService.getInternships(filterDTO);
 

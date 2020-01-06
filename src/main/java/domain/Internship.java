@@ -46,8 +46,7 @@ public class Internship {
     @NonNull
     private LocalDate endDate;
 
-    @Lob
-    @Column
+    @Column(columnDefinition="TEXT")
     private String description;
 
     public InternshipDTO asDTO() {

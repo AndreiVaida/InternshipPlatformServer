@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import repositories.CompanyRepository;
 import repositories.InternshipRepository;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,6 +27,12 @@ public class InternshipServiceImpl implements InternshipService {
         this.companyRepository = companyRepository;
     }
 
+
+    @Transactional
+    @Override
+    public Internship getInternship(Integer id) {
+        return internshipRepository.getOne(id);
+    }
 
     @Override
     public void createInternship(InternshipDTO internshipDTO) {
