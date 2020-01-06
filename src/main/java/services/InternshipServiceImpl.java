@@ -4,7 +4,6 @@ import domain.Company;
 import domain.Internship;
 import dtos.FilterDTO;
 import dtos.InternshipDTO;
-import jdk.vm.ci.meta.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repositories.CompanyRepository;
@@ -50,13 +49,17 @@ public class InternshipServiceImpl implements InternshipService {
 
         List<String> industries = filterDTO.industries.stream().map(String::toLowerCase).collect(Collectors.toList());
         List<String> cities = filterDTO.cities.stream().map(String::toLowerCase).collect(Collectors.toList());
-        LocalDate earliestStartDate = LocalDate.parse(filterDTO.earliestStartDate),
-                latestEndDate = LocalDate.parse(filterDTO.latestEndDate);
+        LocalDate earliestStartDate = null;
+        LocalDate latestEndDate = null;
+        if (filterDTO.earliestStartDate != null) earliestStartDate = LocalDate.parse(filterDTO.earliestStartDate);
+        if (filterDTO.latestEndDate != null) latestEndDate = LocalDate.parse(filterDTO.latestEndDate);
 
+        LocalDate finalEarliestStartDate = earliestStartDate;
+        LocalDate finalLatestEndDate = latestEndDate;
         return internships.stream().filter((i) -> industries.isEmpty() || industries.contains(i.getIndustry().toLowerCase()))
                 .filter((i) -> cities.isEmpty() || cities.contains(i.getCity().toLowerCase()))
-                .filter((i) -> earliestStartDate == null || earliestStartDate.isBefore(i.getStartDate()) || earliestStartDate.isEqual(i.getStartDate()))
-                .filter((i) -> latestEndDate == null || latestEndDate.isAfter(i.getEndDate()) || latestEndDate.isEqual(i.getEndDate()))
+                .filter((i) -> finalEarliestStartDate == null || finalEarliestStartDate.isBefore(i.getStartDate()) || finalEarliestStartDate.isEqual(i.getStartDate()))
+                .filter((i) -> finalLatestEndDate == null || finalLatestEndDate.isAfter(i.getEndDate()) || finalLatestEndDate.isEqual(i.getEndDate()))
                 .map(Internship::asDTO).collect(Collectors.toList());
     }
 }
