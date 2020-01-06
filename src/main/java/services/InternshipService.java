@@ -10,4 +10,6 @@ public interface InternshipService {
     Internship getInternship(Integer id);
     void createInternship(InternshipDTO internshipDTO);
     List<InternshipDTO> getInternships(FilterDTO filterDTO);
+    List<String> getCities();
+    List<String> getIndustries();
 }
