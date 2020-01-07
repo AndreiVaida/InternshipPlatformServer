@@ -32,7 +32,7 @@ public class UserController extends TopController {
         String username = auth.getPrincipal().toString(); // the email
         final User user = userService.getUserByEmail(username);
 
-        final String response = "Hello world! I am " + user.getName();
+        final String response = "Hello world! I am " + user.getName() + ".";
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
